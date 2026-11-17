@@ -103,7 +103,7 @@ A single request, end to end:
 
 ### Install
 
-Download `OpenCode Portal-1.0.0-x64.exe` from the [releases page](https://github.com/lorenzo373/opencode-portal/releases), or [build it from source](#development). The installer is per-user by default, creates Start Menu and desktop shortcuts, and keeps your data when uninstalling.
+Download `OpenCode-Portal-1.0.0-x64.exe` from the [releases page](https://github.com/lorenzo373/opencode-portal/releases), or [build it from source](#development). The installer is per-user by default, creates Start Menu and desktop shortcuts, and keeps your data when uninstalling.
 
 ### Setup
 
