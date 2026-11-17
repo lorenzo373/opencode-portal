@@ -1,0 +1,37 @@
+appId: ai.opencode.portal
+productName: OpenCode Portal
+copyright: Copyright © 2026 OpenCode Portal
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**/*
+  - package.json
+  - '!**/*.map'
+# The tray and window icons are read from resources/ at runtime; without this the app.asar
+# only contains `out`, so a packaged build had no icon to load and the tray rendered blank.
+extraResources:
+  - from: build/icon.png
+    to: icon.png
+  - from: build/icon.ico
+    to: icon.ico
+asar: true
+compression: maximum
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: build/icon.ico
+  artifactName: ${productName}-${version}-${arch}.${ext}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: OpenCode Portal
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  deleteAppDataOnUninstall: false
+publish: null
