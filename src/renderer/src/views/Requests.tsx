@@ -41,8 +41,8 @@ export function Requests() {
         }
       />
 
-      <div className="grid gap-4 lg:grid-cols-[336px_1fr]">
-        <Card className="flex max-h-[calc(100vh-220px)] flex-col overflow-hidden">
+      <div className="grid gap-4 lg:grid-cols-[336px_minmax(0,1fr)]">
+        <Card className="flex min-w-0 max-h-[calc(100vh-220px)] flex-col overflow-hidden">
           <div className="flex shrink-0 items-center gap-1 border-b border-line/70 p-2">
             {(['all', 'cursor', 'errors', 'ok'] as Filter[]).map((option) => (
               <button

@@ -13,7 +13,7 @@ export function RequestDetail({ request }: { request: RequestRecord }) {
   const body = tab === 'request' ? request.requestPreview : tab === 'response' ? request.responsePreview : request.shape
 
   return (
-    <div className="space-y-3">
+    <div className="min-w-0 space-y-3">
       <Card className="p-4">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="min-w-0">
@@ -25,11 +25,11 @@ export function RequestDetail({ request }: { request: RequestRecord }) {
               {request.stream ? <Badge tone="cyan">stream</Badge> : <Badge tone="neutral">buffered</Badge>}
               {request.source === 'cursor' ? <Badge tone="accent">cursor</Badge> : null}
             </div>
-            <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10.5px] text-muted">
+            <div className="mt-1.5 flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10.5px] text-muted">
               <span className="text-soft">{request.method}</span>
-              <span>{request.path}</span>
+              <span className="break-all">{request.path}</span>
               <span className="text-muted/50">→</span>
-              <span>{request.upstreamPath}</span>
+              <span className="break-all">{request.upstreamPath}</span>
             </div>
           </div>
           <div className="text-right">
@@ -38,7 +38,7 @@ export function RequestDetail({ request }: { request: RequestRecord }) {
           </div>
         </div>
 
-        <div className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-5">
+        <div className="mt-3 grid min-w-0 grid-cols-2 gap-2 md:grid-cols-5">
           <Meta label="Session" value={request.sessionId.slice(0, 12) + '…'} mono />
           <Meta label="Sent" value={bytes(request.requestBytes)} />
           <Meta label="Received" value={bytes(request.responseBytes)} />
@@ -65,10 +65,10 @@ export function RequestDetail({ request }: { request: RequestRecord }) {
                   {request.error.code}
                 </Badge>
               </div>
-              <p className="mt-1.5 text-[11.5px] leading-relaxed text-err/75">{request.error.detail}</p>
+              <p className="mt-1.5 text-[11.5px] leading-relaxed text-err/75 [overflow-wrap:anywhere]">{request.error.detail}</p>
               <div className="mt-2 rounded-lg border border-err/20 bg-black/25 px-3 py-2">
                 <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-err/70">Next action</span>
-                <p className="mt-0.5 text-[11.5px] leading-relaxed text-ink/85">{request.error.fix}</p>
+                <p className="mt-0.5 text-[11.5px] leading-relaxed text-ink/85 [overflow-wrap:anywhere]">{request.error.fix}</p>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@ export function RequestDetail({ request }: { request: RequestRecord }) {
             </Button>
           ) : null}
         </div>
-        <pre className="selectable max-h-[46vh] min-h-[180px] overflow-auto whitespace-pre-wrap break-words p-4 font-mono text-[10.5px] leading-relaxed text-soft/85">
+        <pre className="selectable max-h-[46vh] min-h-[180px] w-full min-w-0 max-w-full overflow-auto whitespace-pre-wrap p-4 font-mono text-[10.5px] leading-relaxed text-soft/85 [overflow-wrap:anywhere]">
           {body || (tab === 'request' ? 'Request preview not captured for this call.' : 'No body was returned.')}
         </pre>
       </Card>
@@ -141,7 +141,7 @@ export function RequestDetail({ request }: { request: RequestRecord }) {
 
 function Meta({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
   return (
-    <div className="rounded-lg border border-line/70 bg-white/[0.015] px-2.5 py-1.5">
+    <div className="min-w-0 overflow-hidden rounded-lg border border-line/70 bg-white/[0.015] px-2.5 py-1.5">
       <div className="text-[9.5px] uppercase tracking-[0.08em] text-muted">{label}</div>
       <div className={cx('mt-0.5 truncate text-[11px] text-soft', mono && 'font-mono')}>{value}</div>
     </div>
