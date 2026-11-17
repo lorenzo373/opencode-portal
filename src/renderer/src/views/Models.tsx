@@ -31,7 +31,7 @@ export function Models() {
       <PageHeader
         eyebrow="Catalog"
         title="Models"
-        description="Live capability data from OpenCode. Badges come from the endpoint itself, so image support and reasoning levels are not guesses."
+        description="Live capability data from OpenCode."
         actions={
           <>
             <Badge tone={state.upstream.ok ? 'ok' : 'warn'}>
